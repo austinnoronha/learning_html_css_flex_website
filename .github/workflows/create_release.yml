@@ -7,8 +7,14 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
   pull_request:
     branches: [ main ]
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -43,8 +49,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ github.run_number }}
-          release_name: Release v${{ github.run_number }} 
+          tag_name: latest, v${{ github.ref }}
+          release_name: HTML5 Website CSS3 & Flex v${{ github.ref  }} 
+          draft: false
+          prerelease: false
+          name: HTML5 Website CSS3 & Flex v${{ github.ref  }} 
+          body: 'This is a siple HTMl website built with HTML5, CSS3 and Flex. This is for learning purpose only. View live on github pages https://flexit.live'
 
       # Run - Compress ZIP
       - name: Archive site content
@@ -61,5 +71,5 @@ jobs:
         with:
           upload_url: ${{ steps.create-new-release.outputs.upload_url }}
           asset_path: ./site.zip
-          asset_name: site_v${{ github.run_number }}.zip
+          asset_name: site_v${{ github.ref }}.zip
           asset_content_type: application/zip
