@@ -45,13 +45,13 @@ jobs:
         with:
           tag_name: v${{ github.run_number }}
           release_name: Release v${{ github.run_number }} 
-          exclusions: '*.git* /*node_modules/* .editorconfig .github' 
 
       # Run - Compress ZIP
       - name: Archive site content
         uses: thedoctor0/zip-release@master
         with:
           filename: site.zip
+          exclusions: '*.git* /*node_modules/* .editorconfig *.github*'
       
       # Run - Upload ZIP
       - name: Upload release asset
