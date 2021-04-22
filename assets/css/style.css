@@ -1,4 +1,4 @@
-header .banner, header .banner .content, footer {
+header .banner, header .banner .content, section#contact, footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -142,6 +142,13 @@ nav .brand_name {
           align-items: center;
 }
 
+nav .brand_name::after {
+  content: "";
+  border-style: solid;
+  border-width: 12px 0 12px 20px;
+  border-color: transparent transparent transparent var(--hero-banner-color);
+}
+
 nav .brand_name a {
   background-color: var(--hero-banner-color);
   color: var(--text-color-on-secondary-bg-color);
@@ -152,13 +159,6 @@ nav .brand_name a {
   border-radius: 2px;
   font-weight: bold;
   display: inline-block;
-}
-
-nav .brand_name::after {
-  content: "";
-  border-style: solid;
-  border-width: 12px 0 12px 20px;
-  border-color: transparent transparent transparent var(--hero-banner-color);
 }
 
 nav ul {
@@ -191,7 +191,7 @@ nav ul li a {
   line-height: 30px;
 }
 
-nav ul li a :hover {
+nav ul li a:hover {
   background-color: var(--menu-bg-color);
   color: var(--menu-hover-color);
   -webkit-transition: linear;
@@ -244,6 +244,7 @@ header .banner {
 
 header .banner .content {
   width: 100%;
+  text-align: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -254,6 +255,7 @@ header .banner .content h1 {
   color: var(--hero-banner-color);
   margin-bottom: 10px;
   font-size: 40px;
+  line-height: 45px;
 }
 
 header .banner .content p {
@@ -273,7 +275,7 @@ header .banner .content a {
   border-radius: 5px;
 }
 
-header .banner .content a :hover {
+header .banner .content a:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-transition: 0.3s;
@@ -303,19 +305,7 @@ header .banner .content a :hover {
           justify-content: center;
   -ms-flex-line-pack: start;
       align-content: flex-start;
-}
-
-.container section h2 {
-  width: 100%;
-  text-align: center;
-  border-bottom: var(--hero-banner-color);
-  font-size: 36px;
-  margin: 30px 0;
-}
-
-.container section p {
-  width: calc(50% - 60px);
-  padding: 20px 30px;
+  /*Contact Form*/
 }
 
 .container section:nth-child(even) {
@@ -330,6 +320,19 @@ header .banner .content a :hover {
 .container section:nth-child(odd) {
   color: var(--text-color-on-secondary-bg-color);
   background-color: var(--secondary-bg-color);
+}
+
+.container section h2 {
+  width: 100%;
+  text-align: center;
+  border-bottom: var(--hero-banner-color);
+  font-size: 36px;
+  margin: 30px 0;
+}
+
+.container section p {
+  width: calc(50% - 60px);
+  padding: 20px 30px;
 }
 
 .container section form {
@@ -354,7 +357,6 @@ header .banner .content a :hover {
 
 .container section form ul li input {
   width: calc(50% - 10px);
-  cursor: pointer;
 }
 
 .container section form ul li input[type="text"],
@@ -375,6 +377,7 @@ header .banner .content a :hover {
   height: 40px;
   vertical-align: middle;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .container section form ul li input[type="reset"] {
@@ -383,20 +386,14 @@ header .banner .content a :hover {
   width: 120px;
   height: 40px;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 section#contact {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 ul.services {
@@ -449,13 +446,13 @@ ul.services li a {
   font-size: 16px;
   -webkit-transition: 0.2s;
   transition: 0.2s;
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s;
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
 }
 
 ul.services li a:hover {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 /*Footer*/
@@ -464,5 +461,46 @@ footer {
   color: var(--footer-menu-secondary-color);
   width: 100%;
   height: 100px;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+  header .banner .content h1 {
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .container section h2 {
+    font-size: 25px;
+    line-height: 30px;
+  }
+  ul.services {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  ul.services li {
+    width: calc(100%);
+  }
+  .container section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+  }
+  .container section p {
+    width: calc(100% - 60px);
+  }
+  section#contact {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  section#contact form {
+    width: calc(100%);
+  }
 }
 /*# sourceMappingURL=style.css.map */

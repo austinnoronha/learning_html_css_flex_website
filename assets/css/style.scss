@@ -99,6 +99,13 @@ nav{
         justify-content: flex-start;
         align-items: center;
 
+        &::after{
+            content: "";
+            border-style: solid;
+            border-width: 12px 0 12px 20px;
+            border-color: transparent transparent transparent var(--hero-banner-color);
+        }
+
         a{
             background-color: var(--hero-banner-color);
             color: var(--text-color-on-secondary-bg-color);
@@ -110,13 +117,6 @@ nav{
             font-weight: bold;
             display: inline-block;
         }
-    }
-
-    .brand_name::after{
-        content: "";
-        border-style: solid;
-        border-width: 12px 0 12px 20px;
-        border-color: transparent transparent transparent var(--hero-banner-color);
     }
 
     ul{
@@ -140,9 +140,9 @@ nav{
                 color: var(--menu-color);
                 display: block;
                 border-radius: 3px;
-                line-height: 30px;
+                line-height: 30px;        
 
-                :hover{
+                &:hover{
                     background-color: var(--menu-bg-color);
                     color: var(--menu-hover-color);
                     transition: linear;
@@ -177,7 +177,7 @@ header{
 
         .content{
             width: 100%;
-            
+            text-align: center;
             flex-direction: column;
             @extend %flex_align_items_center;
 
@@ -185,6 +185,7 @@ header{
                 color: var(--hero-banner-color);
                 margin-bottom: 10px;
                 font-size: 40px;
+                line-height: 45px;
             }
 
             p{
@@ -203,7 +204,7 @@ header{
                 padding: 5px 20px;
                 border-radius: 5px;
 
-                :hover{
+                &:hover{
                     transform: scale(1.1);
                     transition: 0.3s;
                     transition-delay: 0.1;
@@ -226,6 +227,20 @@ header{
         justify-content: center;
         align-content: flex-start;
 
+        &:nth-child(even){
+            color: var(--text-color-on-primary-bg-color);
+            background-color: var(--primary-bg-color);
+        }
+    
+        &:nth-child(even) a{
+            color: var(--link-color-on-primary-bg-color);
+        }
+    
+        &:nth-child(odd){
+            color: var(--text-color-on-secondary-bg-color);
+            background-color: var(--secondary-bg-color);
+        }
+
         h2{  
             width: 100%;
             text-align: center;
@@ -238,80 +253,67 @@ header{
             width: calc(50% - 60px);
             padding: 20px 30px;
         }
+
+        /*Contact Form*/
+        form{
+            max-width: 520px;
+            width: calc(100% - 100px);
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 50px;
+            padding-bottom: 50px;
+
+            ul{
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+
+                li{
+                    width: 100%;
+                    margin-bottom: 20px;
+
+                    input {
+                        width: calc(50% - 10px);
+                    }
+
+                    input[type="text"],
+                    input[type="email"]{
+                        width: calc(100% - 20px);
+                        padding: 3px 10px;
+                        height: 40px;
+                        border: 2px solid #3c3c3c;
+                        border-radius: 5px;
+                        outline: none;
+                    }
+
+                    input[type="submit"]{
+                        background-color: var(--hero-banner-color);
+                        color: var(--text-color-on-secondary-bg-color);
+                        border: 1px solid #02c76d;
+                        width: 120px;
+                        height: 40px;
+                        vertical-align: middle;
+                        margin-right: 10px;
+                        cursor: pointer;
+                    }
+
+                    input[type="reset"]{
+                        border: none;
+                        background: none;
+                        width: 120px;
+                        height: 40px;
+                        vertical-align: middle;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
     }
-    
-    section:nth-child(even){
-        color: var(--text-color-on-primary-bg-color);
-        background-color: var(--primary-bg-color);
-    }
-
-    section:nth-child(even) a{
-        color: var(--link-color-on-primary-bg-color);
-    }
-
-    section:nth-child(odd){
-        color: var(--text-color-on-secondary-bg-color);
-        background-color: var(--secondary-bg-color);
-    }
-}
-
-.container section form{
-    max-width: 520px;
-    width: calc(100% - 100px);
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 50px;
-    padding-bottom: 50px;
-}
-
-.container section form ul{
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.container section form ul li{
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.container section form ul li input {
-    width: calc(50% - 10px);
-    cursor: pointer;
-}
-.container section form ul li input[type="text"],
-.container section form ul li input[type="email"]{
-    width: calc(100% - 20px);
-    padding: 3px 10px;
-    height: 40px;
-    border: 2px solid #3c3c3c;
-    border-radius: 5px;
-    outline: none;
-}
-
-.container section form ul li input[type="submit"]{
-    background-color: var(--hero-banner-color);
-    color: var(--text-color-on-secondary-bg-color);
-    border: 1px solid #02c76d;
-    width: 120px;
-    height: 40px;
-    vertical-align: middle;
-    margin-right: 10px;
-}
-
-.container section form ul li input[type="reset"]{
-    border: none;
-    background: none;
-    width: 120px;
-    height: 40px;
-    vertical-align: middle;
 }
 
 section#contact {
-    display: flex;
     flex-direction: column;
-    justify-items: center;
-    align-items: center;
+    @extend %flex_align_items_center;
 }
 
 ul.services {
@@ -324,42 +326,43 @@ ul.services {
     margin-top: 20px;
     margin-bottom: 30px;
     padding-top: 20px;
-}
 
-ul.services li {
-    width: 28%;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-    margin: 25px 0 0 0;
-}
+    li {
+        width: 28%;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-align: center;
+        margin: 25px 0 0 0;
 
-ul.services li h3{
-    background-color: var(--heading-bg-color);
-    padding: 10px 0;
-}
+        h3{
+            background-color: var(--heading-bg-color);
+            padding: 10px 0;
+        }
 
-ul.services li p{
-    width: calc(100% - 50px);
-    padding: 25px;
-    font-size: 16px;
-}
+        p{
+            width: calc(100% - 50px);
+            padding: 25px;
+            font-size: 16px;
+        }
 
-ul.services li a{
-    color: #181818;
-    display: inline-block;
-    padding: 10px 20px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    transition: 0.2s;
-    transition-delay: 0.2s;
-}
+        a{
+            color: #181818;
+            display: inline-block;
+            padding: 10px 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            transition: 0.2s;
+            transition-delay: 0.1s;
 
-ul.services li a:hover{
-    transform: scale(1.2);
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+        
+    }
 }
 
 /*Footer*/
@@ -368,6 +371,62 @@ footer{
     color: var(--footer-menu-secondary-color);
     width: 100%;
     height: 100px;
-
     @extend %flex_align_items_center;
+}
+
+
+$breakpoint-tablet: 768px;
+@media (max-width: $breakpoint-tablet) {
+
+    nav {
+        ul{
+            display: none;
+        }
+    }
+
+    header {
+        .banner {
+            .content {
+                h1 {
+                    font-size: 25px;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+
+    .container{
+        section{
+            h2{
+                font-size: 25px;
+                line-height: 30px;    
+            }
+        }
+    }
+
+    ul.services{
+        flex-direction: column;
+
+        li{
+            width: calc(100%);
+        }
+    }
+
+    .container{
+        section{
+            flex-flow: column wrap;
+
+            p{
+                width: calc(100% - 60px);
+            }
+        }
+    }
+
+    section#contact{
+        flex-direction: row;
+
+        form{
+            width: calc(100%);
+        }
+    }
 }
