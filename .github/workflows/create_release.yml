@@ -50,10 +50,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v${{ github.run_number }}
-          release_name: HTML5 Website CSS3 & Flex v${{ github.run_number  }} 
+          release_name: HTML5 Website - Demo v${{ github.run_number  }} 
           draft: false
           prerelease: false
-          body: 'This is a siple HTMl website built with HTML5, CSS3 and Flex. (${{ github.run_number  }} ) This is for learning purpose only. View live on github pages https://flexit.live'
+          body: 'This is a simple HTML website built with HTML5, CSS3 - Flex & Animation, SCSS. (${{ github.run_number  }} ) This is for learning purpose only. You are free to use it. View live on github pages https://flexit.live'
 
       # Run - Compress ZIP
       - name: Archive site content
